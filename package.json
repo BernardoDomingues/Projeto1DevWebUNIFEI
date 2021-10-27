@@ -1,0 +1,19 @@
+{
+  "name": "projeto1",
+  "version": "1.0.0",
+  "description": "O Projeto para a N1 de Desenvolvimento Web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BernardoDomingues/Projeto1DevWebUNIFEI.git"
+  },
+  "author": "Bernardo Domingues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BernardoDomingues/Projeto1DevWebUNIFEI/issues"
+  },
+  "homepage": "https://github.com/BernardoDomingues/Projeto1DevWebUNIFEI#readme"
+}
