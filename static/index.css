@@ -54,6 +54,10 @@ nav a:hover {
   transition: 1s;
 }
 
+.atualPage {
+  border-bottom: 1px solid #eceffe;
+}
+
 /* nav #icon {
   color: #eceffe;
   font-size: 18px;
