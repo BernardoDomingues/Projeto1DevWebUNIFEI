@@ -10,5 +10,6 @@
         "css": "text/css",
         "js": "text/javascript",
         "json": "application/json"
-    }
+    },
+    "projectName": "Projeto N1"
 }

@@ -4,5 +4,5 @@ var args = process.argv,
   webServer = require("./server");
 
 webServer.listen(port, function () {
-  console.log("Server started at port " + port);
+  console.log(`Servidor iniciado na porta ${port}, acesse localhost:${port} no seu navegador`);
 });
