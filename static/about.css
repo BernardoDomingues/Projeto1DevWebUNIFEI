@@ -1,11 +1,9 @@
 .profileGrid {
   margin: 50px 180px 50px 180px;
   display: grid;
-  gap: 10px;
+  gap: 20px;
   grid-template-columns: 1fr 1fr 1fr;
-  @media (max-width: 800px) {
-    grid-template-columns: 1fr;
-  }
+  grid-auto-flow: column; /*https://css-tricks.com/snippets/css/complete-guide-grid/#grid-auto-flow*/
 }
 
 .profileGrid img {
@@ -45,4 +43,18 @@
 .cardFooter {
   text-decoration: none;
   margin-top: 20px;
+}
+/*https://css-tricks.com/a-complete-guide-to-css-media-queries/*/
+@media screen and (max-width: 800px) {
+  .profileGrid {
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-flow: column;
+  }
+}
+
+@media screen and (min-width: 801px) and (max-width: 1024px) {
+  .profileGrid {
+    grid-template-rows: 1fr 1fr;
+    grid-auto-flow: column;
+  }
 }
