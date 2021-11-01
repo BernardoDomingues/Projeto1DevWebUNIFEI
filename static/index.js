@@ -18,9 +18,11 @@ const searchMovie = async (value) => {
       const { results } = data;
       results.sort((a, b) => orderMovies(a, b));
       console.log(results);
-      const returnedApiValue = results.map(
-        (i) => `<img src="${i.image}" height=300px width=200px; />`
+      let returnedApiValue = '';
+      results.map(
+        (i) => returnedApiValue = `${returnedApiValue}<img src="${i.image}" height=400px width=270px; />`
       );
+      console.log(returnedApiValue);
       document.getElementById("resultsDiv").innerHTML = returnedApiValue;
     });
 };
