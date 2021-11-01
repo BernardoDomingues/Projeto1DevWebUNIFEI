@@ -4,6 +4,10 @@ NOME: Bernardo Domingues - RA: 2020007540
 NOME: Vinicius Santos - RA: 2020021745
  */
 
+const individualData = (value) => {
+  alert(value);
+};
+
 const orderMovies = (a, b) => {
   // Função que ordena os filmes por data de lançamento
   if (a.description > b.description) {

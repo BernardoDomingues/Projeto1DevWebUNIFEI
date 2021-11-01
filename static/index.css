@@ -166,3 +166,8 @@ nav a:hover {
   text-align: center;
   margin: 15px;
 }
+
+.individualCardMovie img:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
