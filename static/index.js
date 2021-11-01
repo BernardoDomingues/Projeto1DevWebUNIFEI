@@ -5,7 +5,10 @@ const searchMovie = async (value) => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      const { results } = data;
+      console.log(results);
+      const returnedApiValue = results.map((i) => `<img src="${i.image}" height=300px width=200px; />`);
+      document.getElementById('resultsDiv').innerHTML = returnedApiValue;
     });
 };
 
