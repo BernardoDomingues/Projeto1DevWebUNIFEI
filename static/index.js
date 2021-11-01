@@ -1,3 +1,13 @@
+const orderMovies = (a, b) => {
+  if (a.description > b.description) {
+    return 1;
+  }
+  if (a.description < b.description) {
+    return -1;
+  }
+  return 0;
+};
+
 const searchMovie = async (value) => {
   const movieApiKey = "k_xmg5bz3v";
   fetch(`https://imdb-api.com/en/API/SearchMovie/${movieApiKey}/${value}`)
@@ -6,9 +16,12 @@ const searchMovie = async (value) => {
     })
     .then((data) => {
       const { results } = data;
+      results.sort((a, b) => orderMovies(a, b));
       console.log(results);
-      const returnedApiValue = results.map((i) => `<img src="${i.image}" height=300px width=200px; />`);
-      document.getElementById('resultsDiv').innerHTML = returnedApiValue;
+      const returnedApiValue = results.map(
+        (i) => `<img src="${i.image}" height=300px width=200px; />`
+      );
+      document.getElementById("resultsDiv").innerHTML = returnedApiValue;
     });
 };
 
