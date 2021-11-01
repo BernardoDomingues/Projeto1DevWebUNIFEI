@@ -1,4 +1,5 @@
 const orderMovies = (a, b) => {
+  // Função que ordena os filmes por data de lançamento
   if (a.description > b.description) {
     return 1;
   }
@@ -9,36 +10,37 @@ const orderMovies = (a, b) => {
 };
 
 const searchMovie = async (value) => {
-  const movieApiKey = "k_xmg5bz3v";
-  fetch(`https://imdb-api.com/en/API/SearchMovie/${movieApiKey}/${value}`)
+  const movieApiKey1 = "k_xmg5bz3v"; // Armazena a API Key na variável movieApiKey
+  const movieApiKey2 = "k_2bzlmvl6";
+  fetch(`https://imdb-api.com/en/API/SearchMovie/${movieApiKey2}/${value}`) // Faz a busca através do método fetch
     .then((response) => {
-      return response.json();
+      return response.json(); // Retorna dados como JSON
     })
     .then((data) => {
-      const { results } = data;
-      results.sort((a, b) => orderMovies(a, b));
+      const { results } = data; // Captura os resultados da busca
+      results.sort((a, b) => orderMovies(a, b)); // Ordena os Filmes em ordem de lançamento
       console.log(results);
-      let returnedApiValue = '';
+      let returnedApiValue = ""; // Declara variável de armazenamento do HTML dos resultados
       results.map(
-        (i) => returnedApiValue = `${returnedApiValue}<img src="${i.image}" height=400px width=270px; />`
+        (i) =>
+          (returnedApiValue = `${returnedApiValue}<div class="individualCardMovie"><img src="${i.image}" height=400px width=270px; /><div>${i.title} ${i.description}</div></div>`) // Itera os resultados na variável returnedApiValue
       );
       console.log(returnedApiValue);
-      document.getElementById("resultsDiv").innerHTML = returnedApiValue;
+      document.getElementById("resultsDiv").innerHTML = returnedApiValue; // Coloca os resultados iterados dentro da div resultsDiv
     });
 };
 
 const validadeSearch = () => {
   const contentSearchBox = document
     .getElementById("searchBox")
-    .value.toLowerCase();
-  if (contentSearchBox === "") {
-    alert("Nada a Pesquisar");
-  } else {
-    searchMovie(contentSearchBox);
+    .value.toLowerCase(); // Armazena a informação digitada pelo usuário na caixa de texto na variável contentSearchBox
+  if (contentSearchBox !== "") {
+    searchMovie(contentSearchBox); // Chama a função de Pesquisa na API caso a entrada de dados do usuário seja válida, passando a pesquisa por parâmetro
   }
 };
 
 const validadeKeyPressed = () => {
+  // Caso a tecla clicada for "Enter" chama a função validadeSearch
   if (event.key === "Enter") {
     validadeSearch();
   }
@@ -46,8 +48,8 @@ const validadeKeyPressed = () => {
 
 document
   .getElementById("searchButton")
-  .addEventListener("click", validadeSearch);
-document.addEventListener("keypress", validadeKeyPressed, false);
+  .addEventListener("click", validadeSearch); // monitora clique no botão Pesquisar, chamando a função validateSearch em caso de evento encontrado
+document.addEventListener("keypress", validadeKeyPressed, false); // Monitora entrada de dados no teclado, chamando a função validadeKeyPressed em caso de evento encontrado
 
 // ["click", "keypress"].forEach((evt) =>
 //   document
