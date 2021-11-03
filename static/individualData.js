@@ -8,6 +8,7 @@ const movieApiKey1 = "k_taov506t"; // Armazena a API Key na variável movieApiKe
 const movieApiKey2 = "k_xmg5bz3v";
 const movieApiKey3 = "k_e79fx2fd";
 const movieApiKey4 = "k_2bzlmvl6";
+const movieApiKey5 = "k_eb1b16cs";
 
 // const getActorData = (actorId) =>
 //   fetch(`https://imdb-api.com/en/API/Search/${movieApiKey4}/${actorId}`) // Faz a busca através do método fetch
@@ -31,7 +32,7 @@ const handleSimilarClick = (movieId) => {
 
 const selectIndividualDataMovie = () => {
   const movieId = localStorage.getItem("id");
-  fetch(`https://imdb-api.com/en/API/Title/${movieApiKey4}/${movieId}`) // Faz a busca através do método fetch
+  fetch(`https://imdb-api.com/en/API/Title/${movieApiKey5}/${movieId}`) // Faz a busca através do método fetch
     .then((response) => {
       return response.json(); // Retorna dados como JSON
     })
