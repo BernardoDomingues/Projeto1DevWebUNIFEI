@@ -1,0 +1,17 @@
+#movieDataDiv {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+#movieDataDiv img {
+  margin: 20px;
+  border-radius: 10px;
+}
+
+#movieTitle {
+  color: #061761;
+}
+
+#movieDataDiv h4 {
+  margin-left: 20px;
+}

@@ -4,10 +4,6 @@ NOME: Bernardo Domingues - RA: 2020007540
 NOME: Vinicius Santos - RA: 2020021745
  */
 
-const individualData = (value) => {
-  alert(value);
-};
-
 const orderMovies = (a, b) => {
   // Função que ordena os filmes por data de lançamento
   if (a.description > b.description) {
@@ -24,6 +20,7 @@ const searchMovie = async (value) => {
   const movieApiKey2 = "k_2bzlmvl6";
   const movieApiKey3 = "k_taov506t";
   const movieApiKey4 = "k_e79fx2fd";
+
   fetch(`https://imdb-api.com/en/API/SearchMovie/${movieApiKey2}/${value}`) // Faz a busca através do método fetch
     .then((response) => {
       return response.json(); // Retorna dados como JSON
@@ -35,7 +32,7 @@ const searchMovie = async (value) => {
       let returnedApiValue = ""; // Declara variável de armazenamento do HTML dos resultados
       results.map(
         (i) =>
-          (returnedApiValue = `${returnedApiValue}<div class="individualCardMovie"><img src="${i.image}" height=400px width=270px onClick="individualData('${i.id}')" /><div>${i.title}</div></div>`) // Itera os resultados na variável returnedApiValue
+          (returnedApiValue = `${returnedApiValue}<div class="individualCardMovie"><a href="individualData.html"><img src="${i.image}" height=400px width=270px onClick="localStorage.setItem('id', '${i.id}')" /></a><div>${i.title}</div></div>`) // Itera os resultados na variável returnedApiValue
       );
       console.log(returnedApiValue);
       document.getElementById("resultsDiv").innerHTML = returnedApiValue; // Coloca os resultados iterados dentro da div resultsDiv
