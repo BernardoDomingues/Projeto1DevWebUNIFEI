@@ -9,25 +9,25 @@ const movieApiKey2 = "k_xmg5bz3v";
 const movieApiKey3 = "k_e79fx2fd";
 const movieApiKey4 = "k_2bzlmvl6";
 
-const getActorData = (actorId) =>
-  fetch(`https://imdb-api.com/en/API/Search/${movieApiKey4}/${actorId}`) // Faz a busca através do método fetch
-    .then((response) => {
-      return response.json(); // Retorna dados como JSON
-    })
-    .then((data) => {
-      const actorData = data.results[0];
-      const returnedValue = {
-        name: actorData.title,
-        image: actorData.image,
-        roles: actorData.description,
-      };
-      return returnedValue;
-    });
+// const getActorData = (actorId) =>
+//   fetch(`https://imdb-api.com/en/API/Search/${movieApiKey4}/${actorId}`) // Faz a busca através do método fetch
+//     .then((response) => {
+//       return response.json(); // Retorna dados como JSON
+//     })
+//     .then((data) => {
+//       const actorData = data.results[0];
+//       const returnedValue = {
+//         name: actorData.title,
+//         image: actorData.image,
+//         roles: actorData.description,
+//       };
+//       return returnedValue;
+//     });
 
-const handleSimilarClick = (movieId) => {
-  localStorage.setItem("id", movieId);
-  document.location.reload(true);
-};
+// const handleSimilarClick = (movieId) => {
+//   localStorage.setItem("id", movieId);
+//   document.location.reload(true);
+// };
 
 const selectIndividualDataMovie = () => {
   const movieId = localStorage.getItem("id");
@@ -42,10 +42,10 @@ const selectIndividualDataMovie = () => {
         (i) =>
           (similarMoviesCode = `${similarMoviesCode}<div class="similarMovies" onClick="handleSimilarClick('${i.id}')" ><img src="${i.image}" height=250px width=160px /><div>${i.fullTitle}</div></div>`)
       );
-      data.starList.map((i) => {
-        const teste = getActorData(i.id);
-        console.log(teste);
-      });
+    //   data.starList.map((i) => {
+    //     const teste = getActorData(i.id);
+    //     console.log(teste);
+    //   });
       const returnedApiValue = `
         <img src="${data.image}" height=400px width=270px />
         <div id="rightSide">
