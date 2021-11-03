@@ -35,7 +35,7 @@ const searchMovie = async (value) => {
       let returnedApiValue = ""; // Declara variável de armazenamento do HTML dos resultados
       results.map(
         (i) =>
-          (returnedApiValue = `${returnedApiValue}<div class="individualCardMovie"><img src="${i.image}" height=400px width=270px; /><div>${i.title} ${i.description}</div></div>`) // Itera os resultados na variável returnedApiValue
+          (returnedApiValue = `${returnedApiValue}<div class="individualCardMovie"><img src="${i.image}" height=400px width=270px onClick="individualData('${i.id}')" /><div>${i.title}</div></div>`) // Itera os resultados na variável returnedApiValue
       );
       console.log(returnedApiValue);
       document.getElementById("resultsDiv").innerHTML = returnedApiValue; // Coloca os resultados iterados dentro da div resultsDiv
