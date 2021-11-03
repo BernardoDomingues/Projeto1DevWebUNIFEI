@@ -16,12 +16,12 @@ const orderMovies = (a, b) => {
 };
 
 const searchMovie = async (value) => {
-  const movieApiKey1 = "k_xmg5bz3v"; // Armazena a API Key na variável movieApiKey
-  const movieApiKey2 = "k_2bzlmvl6";
-  const movieApiKey3 = "k_taov506t";
-  const movieApiKey4 = "k_e79fx2fd";
+  const movieApiKey1 = "k_taov506t"; // Armazena a API Key na variável movieApiKey
+  const movieApiKey2 = "k_xmg5bz3v";
+  const movieApiKey3 = "k_e79fx2fd";
+  const movieApiKey4 = "k_2bzlmvl6";
 
-  fetch(`https://imdb-api.com/en/API/SearchMovie/${movieApiKey2}/${value}`) // Faz a busca através do método fetch
+  fetch(`https://imdb-api.com/en/API/SearchMovie/${movieApiKey4}/${value}`) // Faz a busca através do método fetch
     .then((response) => {
       return response.json(); // Retorna dados como JSON
     })

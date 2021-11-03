@@ -127,7 +127,7 @@ nav a:hover {
 }
 
 #resultsDiv {
-  gap: 10px;
+  gap: 50px;
   display: flex;
   margin: 10px 10px 0 10px;
   align-items: center;
@@ -162,12 +162,18 @@ nav a:hover {
 }
 
 .individualCardMovie {
-  /* border: solid 1px #061761; */
   text-align: center;
-  margin: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 20px 0 20px 0;
 }
 
-.individualCardMovie img:hover {
-  cursor: pointer;
+.individualCardMovie img {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.individualCardMovie:hover {
   opacity: 0.8;
+  transition: 0.3s;
 }

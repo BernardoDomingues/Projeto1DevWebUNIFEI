@@ -6,6 +6,7 @@
 #movieDataDiv img {
   margin: 20px;
   border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 #movieTitle {
@@ -14,4 +15,24 @@
 
 #movieDataDiv h4 {
   margin-left: 20px;
+}
+
+.similarMovies {
+  cursor: pointer;
+}
+
+.similarMovies:hover {
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+@media screen and (max-width: 1000px) {
+  #movieDataDiv {
+    text-align: center;
+    grid-template-columns: 1fr;
+    margin: 0;
+  }
+  #rightSide {
+    text-align: center;
+  }
 }
