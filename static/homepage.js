@@ -16,13 +16,16 @@ const MostPopularMovies = () => {
     })
     .then((data) => {
       const { items } = data;
-      console.log(items);
+      const { errorMessage } = data;
       let returnedApiValue = ""; // Declara variável de armazenamento do HTML dos resultados
-      items.map(
-        (i) =>
-          (returnedApiValue = `${returnedApiValue}<div class="individualCardMovie"><a href="individualData.html"><img src="${i.image}" height=400px width=270px onClick="localStorage.setItem('id', '${i.id}')" /></a><div>${i.title}</div></div>`) // Itera os resultados na variável returnedApiValue
-      );
-      console.log(returnedApiValue);
+      if (errorMessage) {
+        returnedApiValue = `<div class="error">${errorMessage}</div>`;
+      } else {
+        items.map(
+          (i) =>
+            (returnedApiValue = `${returnedApiValue}<div class="individualCardMovie"><a href="individualData.html"><img src="${i.image}" height=400px width=270px onClick="localStorage.setItem('id', '${i.id}')" /></a><div>${i.title}</div></div>`) // Itera os resultados na variável returnedApiValue
+        );
+      }
       document.getElementById("resultsDiv").innerHTML = returnedApiValue; // Coloca os resultados iterados dentro da div resultsDiv
     });
 };

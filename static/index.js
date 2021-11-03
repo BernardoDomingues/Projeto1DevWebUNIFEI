@@ -28,14 +28,17 @@ const searchMovie = async (value) => {
     })
     .then((data) => {
       const { results } = data; // Captura os resultados da busca
-      results.sort((a, b) => orderMovies(a, b)); // Ordena os Filmes em ordem de lançamento
-      console.log(results);
+      const { errorMessage } = data; // Captura mensagem de erro
       let returnedApiValue = ""; // Declara variável de armazenamento do HTML dos resultados
-      results.map(
-        (i) =>
-          (returnedApiValue = `${returnedApiValue}<div class="individualCardMovie"><a href="individualData.html"><img src="${i.image}" height=400px width=270px onClick="localStorage.setItem('id', '${i.id}')" /></a><div>${i.title}</div></div>`) // Itera os resultados na variável returnedApiValue
-      );
-      console.log(returnedApiValue);
+      if (errorMessage) {
+        returnedApiValue = `<div class="error">${errorMessage}</div>`;
+      } else {
+        results.sort((a, b) => orderMovies(a, b)); // Ordena os Filmes em ordem de lançamento
+        results.map(
+          (i) =>
+            (returnedApiValue = `${returnedApiValue}<div class="individualCardMovie"><a href="individualData.html"><img src="${i.image}" height=400px width=270px onClick="localStorage.setItem('id', '${i.id}')" /></a><div>${i.title}</div></div>`) // Itera os resultados na variável returnedApiValue
+        );
+      }
       document.getElementById("resultsDiv").innerHTML = returnedApiValue; // Coloca os resultados iterados dentro da div resultsDiv
     });
 };

@@ -177,3 +177,8 @@ nav a:hover {
   opacity: 0.8;
   transition: 0.3s;
 }
+
+.error {
+  color: red;
+  text-align: center;
+}

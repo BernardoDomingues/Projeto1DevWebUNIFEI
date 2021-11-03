@@ -37,17 +37,20 @@ const selectIndividualDataMovie = () => {
       return response.json(); // Retorna dados como JSON
     })
     .then((data) => {
-      console.log(data);
+      const { errorMessage } = data;
       let similarMoviesCode = "";
-      data.similars.map(
-        (i) =>
-          (similarMoviesCode = `${similarMoviesCode}<div class="similarMovies" onClick="handleSimilarClick('${i.id}')" ><img src="${i.image}" height=250px width=160px /><div>${i.fullTitle}</div></div>`)
-      );
-    //   data.starList.map((i) => {
-    //     const teste = getActorData(i.id);
-    //     console.log(teste);
-    //   });
-      const returnedApiValue = `
+      let returnedApiValue = "";
+      if (errorMessage) {
+        returnedApiValue = `<div class="error">${errorMessage}</div>`;
+      } else {
+        data.similars.map(
+          (i) =>
+            (similarMoviesCode = `${similarMoviesCode}<div class="similarMovies" onClick="handleSimilarClick('${i.id}')" ><img src="${i.image}" height=250px width=160px /><div>${i.fullTitle}</div></div>`)
+        );
+        //   data.starList.map((i) => {
+        //     const teste = getActorData(i.id);
+        //   });
+        returnedApiValue = `
         <img src="${data.image}" height=400px width=270px />
         <div id="rightSide">
             <h1 id="movieTitle" >${data.fullTitle}</h1>
@@ -60,6 +63,7 @@ const selectIndividualDataMovie = () => {
           ${similarMoviesCode}
         </div>
       `;
+      }
       document.getElementById("movieDataDiv").innerHTML = returnedApiValue; // Coloca os resultados iterados dentro da div resultsDiv
     });
 };
