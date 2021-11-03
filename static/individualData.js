@@ -24,10 +24,10 @@ const movieApiKey4 = "k_2bzlmvl6";
 //       return returnedValue;
 //     });
 
-// const handleSimilarClick = (movieId) => {
-//   localStorage.setItem("id", movieId);
-//   document.location.reload(true);
-// };
+const handleSimilarClick = (movieId) => {
+  localStorage.setItem("id", movieId);
+  document.location.reload(true);
+};
 
 const selectIndividualDataMovie = () => {
   const movieId = localStorage.getItem("id");
