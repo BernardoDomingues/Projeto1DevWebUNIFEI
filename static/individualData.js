@@ -45,21 +45,23 @@ const selectIndividualDataMovie = () => {
       } else {
         data.similars.map(
           (i) =>
-            (similarMoviesCode = `${similarMoviesCode}<div class="similarMovies" onClick="handleSimilarClick('${i.id}')" ><img src="${i.image}" height=250px width=160px /><div>${i.fullTitle}</div></div>`)
+            (similarMoviesCode = `${similarMoviesCode}<div class="mapSimilarMovies" onClick="handleSimilarClick('${i.id}')" ><img src="${i.image}" height=250px width=160px /><div>${i.title}</div></div>`)
         );
         //   data.starList.map((i) => {
         //     const teste = getActorData(i.id);
         //   });
         returnedApiValue = `
-        <img src="${data.image}" height=400px width=270px />
-        <div id="rightSide">
-            <h1 id="movieTitle" >${data.fullTitle}</h1>
-            <h3>${data.genres}</h3>
-            <p>${data.plot}</p>
-            <span>${data.year} - ${data.companies}</span>
+        <div class="internalData">
+          <img src="${data.image}" height=400px width=270px />
+          <div id="rightSide">
+              <h1 id="movieTitle" >${data.fullTitle}</h1>
+              <h3>${data.genres}</h3>
+              <p>${data.plot}</p>
+              <span>${data.year} - ${data.companies}</span>
+          </div>
         </div>
-        <div>
-          <h4>Similares</h4>
+        <h2>Similares</h2>
+        <div class="similarMovies">
           ${similarMoviesCode}
         </div>
       `;
