@@ -22,8 +22,12 @@
 }
 
 .similarMovies:hover {
-  opacity: 0.8;
+  opacity: 0.9;
   transition: 0.3s;
+}
+
+.similarMovies img:hover {
+  box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.8);
 }
 
 @media screen and (max-width: 1000px) {
