@@ -22,7 +22,7 @@ const searchMovie = async (value) => {
   const movieApiKey4 = "k_2bzlmvl6";
   const movieApiKey5 = "k_eb1b16cs";
 
-  fetch(`https://imdb-api.com/en/API/SearchMovie/${movieApiKey5}/${value}`) // Faz a busca através do método fetch
+  fetch(`https://imdb-api.com/en/API/SearchMovie/${movieApiKey1}/${value}`) // Faz a busca através do método fetch
     .then((response) => {
       return response.json(); // Retorna dados como JSON
     })

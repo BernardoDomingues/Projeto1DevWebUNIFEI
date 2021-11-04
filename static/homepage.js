@@ -10,7 +10,7 @@ const MostPopularMovies = () => {
   const movieApiKey3 = "k_e79fx2fd";
   const movieApiKey4 = "k_2bzlmvl6";
   const movieApiKey5 = "k_eb1b16cs";
-  fetch(`https://imdb-api.com/en/API/MostPopularMovies/${movieApiKey5}`) // Faz a busca através do método fetch
+  fetch(`https://imdb-api.com/en/API/MostPopularMovies/${movieApiKey1}`) // Faz a busca através do método fetch
     .then((response) => {
       return response.json(); // Retorna dados como JSON
     })

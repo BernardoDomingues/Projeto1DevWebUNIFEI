@@ -30,9 +30,24 @@ const handleSimilarClick = (movieId) => {
   document.location.reload(true);
 };
 
+const renderTrailer = (trailerData) => {
+  if (trailerData.linkEmbed) {
+    return `
+    <h2>Trailer</h2>
+    <div id="trailerDiv">
+      <object width="860" height="450">
+        <param name="movie" value="${trailerData.linkEmbed}" />
+        <embed src="${trailerData.linkEmbed}" type="application/x-shockwave-flash" />
+      </object>
+    </div>
+    `;
+  }
+  return "";
+};
+
 const selectIndividualDataMovie = () => {
   const movieId = localStorage.getItem("id");
-  fetch(`https://imdb-api.com/en/API/Title/${movieApiKey1}/${movieId}`) // Faz a busca através do método fetch
+  fetch(`https://imdb-api.com/en/API/Title/${movieApiKey1}/${movieId}/Trailer,`) // Faz a busca através do método fetch
     .then((response) => {
       return response.json(); // Retorna dados como JSON
     })
@@ -50,6 +65,7 @@ const selectIndividualDataMovie = () => {
         //   data.starList.map((i) => {
         //     const teste = getActorData(i.id);
         //   });
+        console.log(data);
         returnedApiValue = `
         <div class="internalData">
           <img src="${data.image}" height=400px width=270px />
@@ -61,6 +77,7 @@ const selectIndividualDataMovie = () => {
             <p>${data.year} - ${data.companies}</p>
           </div>
         </div>
+        ${renderTrailer(data.trailer)}
         <h2>Similares</h2>
         <div class="similarMovies">
           ${similarMoviesCode}
