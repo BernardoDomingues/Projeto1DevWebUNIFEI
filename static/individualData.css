@@ -25,6 +25,7 @@
 
 .mapSimilarMovies {
   cursor: pointer;
+  text-align: center;
 }
 
 .mapSimilarMovies img:hover {

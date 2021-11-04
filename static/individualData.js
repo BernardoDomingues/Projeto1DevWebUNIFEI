@@ -32,7 +32,7 @@ const handleSimilarClick = (movieId) => {
 
 const selectIndividualDataMovie = () => {
   const movieId = localStorage.getItem("id");
-  fetch(`https://imdb-api.com/en/API/Title/${movieApiKey5}/${movieId}`) // Faz a busca através do método fetch
+  fetch(`https://imdb-api.com/en/API/Title/${movieApiKey1}/${movieId}`) // Faz a busca através do método fetch
     .then((response) => {
       return response.json(); // Retorna dados como JSON
     })
@@ -54,10 +54,11 @@ const selectIndividualDataMovie = () => {
         <div class="internalData">
           <img src="${data.image}" height=400px width=270px />
           <div id="rightSide">
-              <h1 id="movieTitle" >${data.fullTitle}</h1>
-              <h3>${data.genres}</h3>
-              <p>${data.plot}</p>
-              <span>${data.year} - ${data.companies}</span>
+            <h1 id="movieTitle" >${data.fullTitle}</h1>
+            <h3>${data.genres}</h3>
+            <p>${data.plot}</p>
+            <p>${data.stars}</p>
+            <p>${data.year} - ${data.companies}</p>
           </div>
         </div>
         <h2>Similares</h2>
