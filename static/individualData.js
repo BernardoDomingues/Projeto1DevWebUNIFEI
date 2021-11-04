@@ -10,20 +10,13 @@ const movieApiKey3 = "k_e79fx2fd";
 const movieApiKey4 = "k_2bzlmvl6";
 const movieApiKey5 = "k_eb1b16cs";
 
-// const getActorData = (actorId) =>
-//   fetch(`https://imdb-api.com/en/API/Search/${movieApiKey4}/${actorId}`) // Faz a busca através do método fetch
-//     .then((response) => {
-//       return response.json(); // Retorna dados como JSON
-//     })
-//     .then((data) => {
-//       const actorData = data.results[0];
-//       const returnedValue = {
-//         name: actorData.title,
-//         image: actorData.image,
-//         roles: actorData.description,
-//       };
-//       return returnedValue;
-//     });
+const handleActors = (actors) => {
+  let actorsReturned = "";
+  actors.map((i) => {
+    actorsReturned = `${actorsReturned}<div class="individualActorCard"><img src="${i.image}" widith="100" height="100" /><div>${i.name}</div><div>${i.asCharacter}</div></div>`;
+  });
+  return actorsReturned;
+};
 
 const handleSimilarClick = (movieId) => {
   localStorage.setItem("id", movieId);
@@ -35,7 +28,7 @@ const renderTrailer = (trailerData) => {
     return `
     <h2>Trailer</h2>
     <div id="trailerDiv">
-      <object width="860" height="450">
+      <object>
         <param name="movie" value="${trailerData.linkEmbed}" />
         <embed src="${trailerData.linkEmbed}" type="application/x-shockwave-flash" />
       </object>
@@ -47,7 +40,7 @@ const renderTrailer = (trailerData) => {
 
 const selectIndividualDataMovie = () => {
   const movieId = localStorage.getItem("id");
-  fetch(`https://imdb-api.com/en/API/Title/${movieApiKey1}/${movieId}/Trailer,`) // Faz a busca através do método fetch
+  fetch(`https://imdb-api.com/en/API/Title/${movieApiKey2}/${movieId}/Trailer,Ratings,`) // Faz a busca através do método fetch
     .then((response) => {
       return response.json(); // Retorna dados como JSON
     })
@@ -62,10 +55,6 @@ const selectIndividualDataMovie = () => {
           (i) =>
             (similarMoviesCode = `${similarMoviesCode}<div class="mapSimilarMovies" onClick="handleSimilarClick('${i.id}')" ><img src="${i.image}" height=250px width=160px /><div>${i.title}</div></div>`)
         );
-        //   data.starList.map((i) => {
-        //     const teste = getActorData(i.id);
-        //   });
-        console.log(data);
         returnedApiValue = `
         <div class="internalData">
           <img src="${data.image}" height=400px width=270px />
@@ -73,9 +62,12 @@ const selectIndividualDataMovie = () => {
             <h1 id="movieTitle" >${data.fullTitle}</h1>
             <h3>${data.genres}</h3>
             <p>${data.plot}</p>
-            <p>${data.stars}</p>
             <p>${data.year} - ${data.companies}</p>
           </div>
+        </div>
+        <h2>Atores</h2>
+        <div id="actorsDiv">
+          ${handleActors(data.actorList)}
         </div>
         ${renderTrailer(data.trailer)}
         <h2>Similares</h2>

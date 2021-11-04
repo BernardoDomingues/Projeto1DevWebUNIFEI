@@ -38,6 +38,20 @@
   text-align: center;
 }
 
+#trailerDiv object{
+  width: 860px;
+  height: 450px;
+}
+
+#actorsDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.individualActorCard{
+  text-align: center;
+}
+
 @media screen and (max-width: 1000px) {
   .internalData {
     text-align: center;
@@ -54,6 +68,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
+  #actorsDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
 
 
@@ -62,6 +80,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+
+  #actorsDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  #trailerDiv object{
+    width: 600px;
+    height: 460px;
+  }
 }
 
 @media screen and (min-width: 650px) and (max-width: 800px) {
@@ -69,11 +96,27 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
+  #actorsDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  #trailerDiv object{
+    width: 460px;
+    height: 300px;
+  }
 }
 
 @media screen and (max-width: 650px) {
   .similarMovies{
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+  #actorsDiv {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  #trailerDiv object{
+    width: 400px;
+    height: 300px;
   }
 }
