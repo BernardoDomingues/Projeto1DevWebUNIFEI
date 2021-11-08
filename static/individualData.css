@@ -1,6 +1,7 @@
 .internalData {
   display: grid;
   grid-template-columns: 1fr 3fr;
+  width: 100vw;
 }
 
 #movieDataDiv img {
@@ -54,11 +55,14 @@
 
 @media screen and (max-width: 1000px) {
   .internalData {
-    text-align: center;
-    grid-template-columns: 1fr;
-    margin: 0;
+    display: block;
+    margin: 10px;
+    width: 90vw;
   }
   #rightSide {
+    text-align: center;
+  }
+  .imagePrincipalDiv {
     text-align: center;
   }
 }

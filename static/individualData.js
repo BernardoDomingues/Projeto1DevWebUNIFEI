@@ -54,7 +54,9 @@ const selectIndividualDataMovie = async () => {
         );
         returnedApiValue = `
         <div class="internalData">
-          <img src="${data.image}" height=400px width=270px />
+          <div class="imagePrincipalDiv">
+            <img src="${data.image}" height=400px width=270px />
+          </div>
           <div id="rightSide">
             <h1 id="movieTitle" >${data.fullTitle}</h1>
             <h3>${data.genres}</h3>
