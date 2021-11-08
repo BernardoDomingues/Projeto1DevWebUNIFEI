@@ -4,6 +4,8 @@ NOME: Bernardo Domingues - RA: 2020007540
 NOME: Vinicius Santos - RA: 2020021745
  */
 
+import { apiKey } from './keys.js';
+
 const orderMovies = (a, b) => {
   // Função que ordena os filmes por data de lançamento
   if (a.description > b.description) {
@@ -16,13 +18,8 @@ const orderMovies = (a, b) => {
 };
 
 const searchMovie = async (value) => {
-  const movieApiKey1 = "k_taov506t"; // Armazena a API Key na variável movieApiKey
-  const movieApiKey2 = "k_xmg5bz3v";
-  const movieApiKey3 = "k_e79fx2fd";
-  const movieApiKey4 = "k_2bzlmvl6";
-  const movieApiKey5 = "k_eb1b16cs";
-
-  fetch(`https://imdb-api.com/en/API/SearchMovie/${movieApiKey2}/${value}`) // Faz a busca através do método fetch
+  const key = await apiKey();
+  fetch(`https://imdb-api.com/en/API/SearchMovie/${key}/${value}`) // Faz a busca através do método fetch
     .then((response) => {
       return response.json(); // Retorna dados como JSON
     })
