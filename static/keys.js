@@ -1,4 +1,4 @@
-const counter = 0;
+let counter = 0;
 const movieApiKeys = [
   "k_taov506t",
   "k_xmg5bz3v",
@@ -20,7 +20,7 @@ export const apiKey = () =>
       } else {
         if (errorMessage) {
           counter++;
-          apiKey();
+          return apiKey();
         } else {
           return movieApiKeys[counter];
         }

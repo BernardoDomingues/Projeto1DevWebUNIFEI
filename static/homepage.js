@@ -8,6 +8,7 @@ import { apiKey } from './keys.js';
 
 const MostPopularMovies = async () => {
   const key = await apiKey();
+  console.log(key);
   fetch(`https://imdb-api.com/en/API/MostPopularMovies/${key}`) // Faz a busca através do método fetch
     .then((response) => {
       return response.json(); // Retorna dados como JSON
