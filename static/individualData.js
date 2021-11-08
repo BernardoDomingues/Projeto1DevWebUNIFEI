@@ -4,7 +4,7 @@ NOME: Bernardo Domingues - RA: 2020007540
 NOME: Vinicius Santos - RA: 2020021745
  */
 
-import { apiKey } from './keys.js';
+import { service } from "./service.js";
 
 const handleActors = (actors) => {
   let actorsReturned = "";
@@ -35,47 +35,40 @@ const renderTrailer = (trailerData) => {
 };
 
 const selectIndividualDataMovie = async () => {
-  const key = await apiKey();
   const movieId = localStorage.getItem("id");
-  fetch(`https://imdb-api.com/en/API/Title/${key}/${movieId}/Trailer,Ratings,`) // Faz a busca através do método fetch
-    .then((response) => {
-      return response.json(); // Retorna dados como JSON
-    })
-    .then((data) => {
-      const { errorMessage } = data;
-      let similarMoviesCode = "";
-      let returnedApiValue = "";
-      if (errorMessage) {
-        returnedApiValue = `<div class="error">${errorMessage}</div>`;
-      } else {
-        data.similars.map(
-          (i) =>
-            (similarMoviesCode = `${similarMoviesCode}<div class="mapSimilarMovies" onClick="handleSimilarClick('${i.id}')" ><img src="${i.image}" height=250px width=160px /><div>${i.title}</div></div>`)
-        );
-        returnedApiValue = `
-        <div class="internalData">
-          <div class="imagePrincipalDiv">
-            <img src="${data.image}" height=400px width=270px />
-          </div>
-          <div id="rightSide">
-            <h1 id="movieTitle" >${data.fullTitle}</h1>
-            <h3>${data.genres}</h3>
-            <p>${data.plot}</p>
-            <p>${data.year} - ${data.companies}</p>
-          </div>
+  const data = await service("individualData", movieId);
+  let similarMoviesCode = "";
+  let returnedApiValue = "";
+  if (data.personalError) {
+    returnedApiValue = `<div class="error">${data.personalError}</div>`;
+  } else {
+    data.similars.map(
+      (i) =>
+        (similarMoviesCode = `${similarMoviesCode}<div class="mapSimilarMovies" onClick="handleSimilarClick('${i.id}')" ><img src="${i.image}" height=250px width=160px /><div>${i.title}</div></div>`)
+    );
+    returnedApiValue = `
+      <div class="internalData">
+        <div class="imagePrincipalDiv">
+          <img src="${data.image}" height=400px width=270px />
         </div>
-        <h2>Atores</h2>
-        <div id="actorsDiv">
-          ${handleActors(data.actorList)}
+        <div id="rightSide">
+          <h1 id="movieTitle" >${data.fullTitle}</h1>
+          <h3>${data.genres}</h3>
+          <p>${data.plot}</p>
+          <p>${data.year} - ${data.companies}</p>
         </div>
-        ${renderTrailer(data.trailer)}
-        <h2>Similares</h2>
-        <div class="similarMovies">
-          ${similarMoviesCode}
-        </div>
-      `;
-      }
-      document.getElementById("movieDataDiv").innerHTML = returnedApiValue; // Coloca os resultados iterados dentro da div resultsDiv
-    });
+      </div>
+      <h2>Atores</h2>
+      <div id="actorsDiv">
+        ${handleActors(data.actorList)}
+      </div>
+      ${renderTrailer(data.trailer)}
+      <h2>Similares</h2>
+      <div class="similarMovies">
+        ${similarMoviesCode}
+      </div>
+    `;
+  }
+  document.getElementById("movieDataDiv").innerHTML = returnedApiValue; // Coloca os resultados iterados dentro da div resultsDiv
 };
 selectIndividualDataMovie();
