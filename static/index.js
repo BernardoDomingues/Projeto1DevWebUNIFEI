@@ -4,7 +4,7 @@ NOME: Bernardo Domingues - RA: 2020007540
 NOME: Vinicius Santos - RA: 2020021745
  */
 
-import { apiKey } from './keys.js';
+import { apiKey } from "./keys.js";
 
 const orderMovies = (a, b) => {
   // Função que ordena os filmes por data de lançamento
@@ -49,20 +49,16 @@ const validadeSearch = () => {
   }
 };
 
-const validadeKeyPressed = () => {
-  // Caso a tecla clicada for "Enter" chama a função validadeSearch
-  if (event.key === "Enter") {
-    validadeSearch();
-  }
-};
-
 document
   .getElementById("searchButton")
-  .addEventListener("click", validadeSearch); // monitora clique no botão Pesquisar, chamando a função validateSearch em caso de evento encontrado
-document.addEventListener("keypress", validadeKeyPressed, false); // Monitora entrada de dados no teclado, chamando a função validadeKeyPressed em caso de evento encontrado
+  .addEventListener("click", validadeSearch); // Monitora clique no botão Pesquisar, chamando a função validateSearch em caso de evento encontrado
 
-// ["click", "keypress"].forEach((evt) =>
-//   document
-//     .getElementById("searchButton")
-//     .addEventListener(evt, searchMovie, false)
-// );
+window.addEventListener( // Monitora o clique no botão enter para fazer a pesquisa
+  "keydown",
+  (event) => {
+    if (event.code === "Enter") {
+      validadeSearch();
+    }
+  },
+  false
+);
