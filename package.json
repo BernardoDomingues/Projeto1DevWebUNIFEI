@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/BernardoDomingues/Projeto1DevWebUNIFEI#readme",
   "dependencies": {
-    "nodemon": "^2.0.14"
+    "nodemon": "^2.0.14",
+    "open": "^8.4.0"
   }
 }

@@ -20,7 +20,7 @@ export const service = async (reqType, options) => {
     .then((data) => {
       let { errorMessage } = data;
       errorMessage ? (errorMessage = errorMessage) : (errorMessage = "");
-      if (errorMessage.startsWith("Maximum usage")) {
+      if ((errorMessage.startsWith("Maximum usage")) || (errorMessage.startsWith("Invalid API Key"))) {
         if (counter === 5) {
           return { personalError: "Uso máximo diário da aplicação atingido, volte amanhã" };
         }
