@@ -1,10 +1,12 @@
 let counter = 0;
 const movieApiKeys = [
+  "k_zf6yfo2k",
   "k_taov506t",
   "k_xmg5bz3v",
   "k_e79fx2fd",
   "k_2bzlmvl6",
   "k_eb1b16cs",
+  "k_kwi1c1vf",
 ];
 
 export const service = async (reqType, options) => {
@@ -21,7 +23,7 @@ export const service = async (reqType, options) => {
       let { errorMessage } = data;
       errorMessage ? (errorMessage = errorMessage) : (errorMessage = "");
       if ((errorMessage.startsWith("Maximum usage")) || (errorMessage.startsWith("Invalid API Key"))) {
-        if (counter === 5) {
+        if (counter === movieApiKeys.length) {
           return { personalError: "Uso máximo diário da aplicação atingido, volte amanhã" };
         }
         counter++;

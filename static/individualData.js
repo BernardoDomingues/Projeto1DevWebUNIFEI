@@ -14,11 +14,6 @@ const handleActors = (actors) => {
   return actorsReturned;
 };
 
-const handleSimilarClick = (movieId) => {
-  localStorage.setItem("id", movieId);
-  document.location.reload(true);
-};
-
 const renderTrailer = (trailerData) => {
   if (trailerData.linkEmbed) {
     return `
@@ -44,7 +39,7 @@ const selectIndividualDataMovie = async () => {
   } else {
     data.similars.map(
       (i) =>
-        (similarMoviesCode = `${similarMoviesCode}<div class="mapSimilarMovies" onClick="handleSimilarClick('${i.id}')" ><img src="${i.image}" height=250px width=160px /><div>${i.title}</div></div>`)
+        (similarMoviesCode = `${similarMoviesCode}<div class="mapSimilarMovies" onClick="localStorage.setItem('id', '${i.id}'), document.location.reload(true)" ><img src="${i.image}" height=250px width=160px /><div>${i.title}</div></div>`)
     );
     returnedApiValue = `
       <div class="internalData">
