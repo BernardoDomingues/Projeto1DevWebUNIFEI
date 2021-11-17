@@ -7,7 +7,7 @@ NOME: Vinicius Santos - RA: 2020021745
 import { service } from "./service.js";
 
 const orderMovies = (a, b) => {
-  // Função que ordena os filmes por data de lançamento
+  // Função que criteriza a ordem de lançamento dos filmes
   if (a.description > b.description) {
     return 1;
   }
@@ -18,14 +18,14 @@ const orderMovies = (a, b) => {
 };
 
 const searchMovie = async (value) => {
-  const data = await service("search", value);
-  const { results } = data;
+  const data = await service("search", value); // Chama sincronamente a função service passando como o parâmetro o tipo de requisição search e a variável value
+  const { results } = data; //Declara a variável results a partir do array de respostas da API
   let returnedApiValue = ""; // Declara variável de armazenamento do HTML dos resultados
-  if (data.personalError) {
-    returnedApiValue = `<div class="error">${data.personalError}</div>`;
+  if (data.personalError) { // Se o personalError for encontrado
+    returnedApiValue = `<div class="error">${data.personalError}</div>`; // Retorna uma div de erro para o usuário
   } else {
     results.sort((a, b) => orderMovies(a, b)); // Ordena os Filmes em ordem de lançamento
-    results.map(
+    results.map(  // Adiciona o array de items na estrutura de repetição map, para criar div individuais de cada filme
       (i) =>
         (returnedApiValue = `${returnedApiValue}<div class="individualCardMovie"><a href="individualData.html"><img src="${i.image}" height=400px width=270px onClick="localStorage.setItem('id', '${i.id}')" /></a><div>${i.title}</div></div>`) // Itera os resultados na variável returnedApiValue
     );
