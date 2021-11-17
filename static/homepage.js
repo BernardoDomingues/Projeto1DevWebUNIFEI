@@ -7,7 +7,7 @@ NOME: Vinicius Santos - RA: 2020021745
 import { service } from "./service.js";
 
 const MostPopularMovies = async () => {
-  const data = await service("homePage");
+  const data = await service("homePage"); //Faz a requisição da API 
   const { items } = data;
   let returnedApiValue = ""; // Declara variável de armazenamento do HTML dos resultados
   if (data.personalError) {
